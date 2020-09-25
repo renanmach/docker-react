@@ -1,0 +1,11 @@
+language: generic 
+
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t renanmach/docker-react  -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true renanmach/docker-react npm run test
